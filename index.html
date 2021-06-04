@@ -3,94 +3,160 @@
 
 <head>
     <title>jQuery Image Zoom | jquery-izoomify</title>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./demo/demo.css">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css" rel="stylesheet" />
 </head>
 
 <body>
     <!-- Images source: https://www.pexels.com -->
-    <div class="plugin-details">
+    <div class="text-center">
         <h1>jquery-izoomify</h1>
+        <p><a class="btn btn-primary" href="https://abiacarl.github.io/jquery-izoomify">https://abiacarl.github.io/jquery-izoomify</a></p>
         <p>jQuery image zoom. MIT license.<br>You are free to use your own styling whatever you want according to your
             needs. <br>Image source from <a href="https://www.pexels.com">pexels.</a></p>
     </div>
 
     <div class="container">
         <h2>Settings</h2>
-        <table>
-            <tr>
-                <td><b>Property</b></td>
-                <td><b>Default</b></td>
-                <td><b>Description</b></td>
-            </tr>
-            <tr>
-                <td>target</td>
-                <td>false</td>
-                <td>Parent container</td>
-            </tr>
-            <tr>
-                <td>touch</td>
-                <td>true</td>
-                <td>Interaction with touch events</td>
-            </tr>
-            <tr>
-                <td>url</td>
-                <td>false</td>
-                <td>Url of image to display on hover</td>
-            </tr>
-            <tr>
-                <td>magnify</td>
-                <td>1.2</td>
-                <td>Image zooming or magnification</td>
-            </tr>
-            <tr>
-                <td>duration</td>
-                <td>120</td>
-                <td>Speed of image zooming in/out</td>
-            </tr>
-            <tr>
-                <td>callback</td>
-                <td>false</td>
-                <td>Function to be called once loaded</td>
-            </tr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td><strong>Property</strong></td>
+                    <td><strong>Default</strong></td>
+                    <td><strong>Description</strong></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>target</td>
+                    <td>false</td>
+                    <td>Parent container</td>
+                </tr>
+                <tr>
+                    <td>touch</td>
+                    <td>true</td>
+                    <td>Interaction with touch events</td>
+                </tr>
+                <tr>
+                    <td>url</td>
+                    <td>false</td>
+                    <td>Url of image to display on hover</td>
+                </tr>
+                <tr>
+                    <td>magnify</td>
+                    <td>1.2</td>
+                    <td>Image zooming or magnification</td>
+                </tr>
+                <tr>
+                    <td>duration</td>
+                    <td>120</td>
+                    <td>Speed of image zooming in/out</td>
+                </tr>
+                <tr>
+                    <td>callback</td>
+                    <td>false</td>
+                    <td>Function to be called once loaded</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 
     <div class="container">
         <h2>Demo</h2>
-        <div class="col-half">
-            <p style="font-weight: bold;">Default</p>
-            <pre><code>&lt;div class="target"&gt;<br>&emsp;&lt;img src="path/to/image.jpg" /&gt;<br>&lt;/div&gt;<br><br>&lt;script&gt;<br>&emsp;$('.target').izoomify();<br>&lt;script&gt;<br><br><br><br></code></pre>
-            <br>
-            <div class="img-wrapper1">
-                <img src="./demo/images/accessory-bag-briefcase-1920x1281.jpg" alt="" />
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Default</h4>
+                <pre>
+    <code class="language-html">
+        &lt;div class="target"&gt;
+            &lt;img src="path/to/image.jpg" alt="..." /&gt;
+        &lt;/div&gt;
+
+        &lt;script type="text/javascript"&gt;
+            $('.target').izoomify();
+        &lt;script&gt;
+    </code>
+</pre>
             </div>
-        </div>
-        <div class="col-half img-fullwidth">
-            <p style="font-weight: bold;">Data Attribute</p>
-            <pre><code>&lt;div class="target"&gt;<br>&emsp;&lt;img src="low-res/image.jpg" <br>&emsp;&emsp;<b>data-izoomify-url</b>="hi-res/hover.jpg" <br>&emsp;&emsp;<b>data-izoomify-magnify</b>="1.8" <br>&emsp;&emsp;<b>data-izoomify-duration</b>="300" /&gt;<br>&lt;/div&gt;<br><br>&lt;script&gt;<br>&emsp;$('.target').izoomify();<br>&lt;script&gt;</code></pre>
-            <br>
-            <div class="img-wrapper2">
-                <img src="./demo/images/accessory-bag-briefcase-400x267.jpg" alt=""
-                    data-izoomify-url="./demo/images/accessory-bag-briefcase-1920x1281.jpg" data-izoomify-magnify="1.8"
-                    data-izoomify-duration="300" />
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="container">
-        <p style="font-weight: bold;">Javascript</p>
-        <pre><code>&lt;div class="target"&gt;<br>&emsp;&lt;img src="low-res/image.jpg" /&gt;<br>&lt;/div&gt;<br><br>&lt;script&gt;<br>&emsp;$('.target').izoomify({<br>&emsp;&emsp;<b>url</b>: "hi-res/hover.jpg",<br>&emsp;&emsp;<b>magnify</b>: 2.75,<br>&emsp;&emsp;<b>duration</b>: 450,<br>&emsp;&emsp;<b>touch</b>: true,<br>&emsp;&emsp;<b>callback</b>: function(){<br>&emsp;&emsp;&emsp;&emsp;//your code here..<br>&emsp;&emsp;}<br>&emsp;});<br>&lt;script&gt;<br><br><br><br></code></pre>
-        <div class="example3 img-fullwidth">
-            <div class="img-wrapper3">
-                <img src="./demo/images/accessory-bag-briefcase-400x267.jpg" alt="" />
+            <div class="col-md-12 mb-5">
+                <div class="img-wrapper img-wrapper1">
+                    <img class="img-fluid" src="./demo/images/accessory-bag-briefcase-1920x1281.jpg" alt="" />
+                </div>
             </div>
         </div>
     </div>
 
-    <p class="author"><a href="https://codepen.io/abiacarl">Made with love by <b>Carl Lomer Abia</b></a></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Data Attribute</h4>
+                <pre>
+    <code class="language-html">
+        &lt;div class="target"&gt;
+            &lt;img
+                src="low-res/image.jpg"
+                data-izoomify-url="hi-res/hover.jpg"
+                data-izoomify-magnify="1.8"
+                data-izoomify-duration="300"
+                alt="..."
+            /&gt;
+        &lt;/div&gt;
+
+        &lt;script type="text/javascript"&gt;
+            $('.target').izoomify();
+        &lt;script&gt;
+    </code>
+</pre>
+            </div>
+            <div class="col-md-12">
+                <div class="img-wrapper img-wrapper2">
+                    <img class="img-fluid" src="./demo/images/accessory-bag-briefcase-400x267.jpg" alt=""
+                        data-izoomify-url="./demo/images/accessory-bag-briefcase-1920x1281.jpg"
+                        data-izoomify-magnify="1.8" data-izoomify-duration="300" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <p style="font-weight: bold;">Javascript</p>
+        <pre>
+    <code class="language-html">
+        &lt;div class="target"&gt;
+            &lt;img src="low-res/image.jpg" alt="..." /&gt;
+        &lt;/div&gt;
+
+        &lt;script type="text/javascript"&gt;
+        $('.target').izoomify({
+            url: "hi-res/hover.jpg",
+            magnify: 2.75,
+            duration: 450,
+            touch: true,
+            callback: function () {
+                //your code here..
+            }
+        });
+        &lt;script&gt;
+            <br><br><br>
+    </code>
+</pre>
+        <div class="example3 img-fullwidth">
+            <div class="img-wrapper img-wrapper3">
+                <img class="img-fluid" src="./demo/images/accessory-bag-briefcase-400x267.jpg" alt="" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <p class="author"><a href="https://codepen.io/abiacarl">Made with love by <strong>Carl Lomer Abia</strong></a></p>
+    </div>
     <!-- scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <script src="./dist/jquery.izoomify.js"></script>
     <script>
         $(document).ready(function () {
