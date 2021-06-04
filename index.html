@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery Image Zoom | jquery-izoomify</title>
+    <link rel="stylesheet" type="text/css" href="./demo/demo.css">
+</head>
+
+<body>
+    <!-- Images source: https://www.pexels.com -->
+    <div class="plugin-details">
+        <h1>jquery-izoomify</h1>
+        <p>jQuery image zoom. MIT license.<br>You are free to use your own styling whatever you want according to your
+            needs. <br>Image source from <a href="https://www.pexels.com">pexels.</a></p>
+    </div>
+
+    <div class="container">
+        <h2>Settings</h2>
+        <table>
+            <tr>
+                <td><b>Property</b></td>
+                <td><b>Default</b></td>
+                <td><b>Description</b></td>
+            </tr>
+            <tr>
+                <td>target</td>
+                <td>false</td>
+                <td>Parent container</td>
+            </tr>
+            <tr>
+                <td>touch</td>
+                <td>true</td>
+                <td>Interaction with touch events</td>
+            </tr>
+            <tr>
+                <td>url</td>
+                <td>false</td>
+                <td>Url of image to display on hover</td>
+            </tr>
+            <tr>
+                <td>magnify</td>
+                <td>1.2</td>
+                <td>Image zooming or magnification</td>
+            </tr>
+            <tr>
+                <td>duration</td>
+                <td>120</td>
+                <td>Speed of image zooming in/out</td>
+            </tr>
+            <tr>
+                <td>callback</td>
+                <td>false</td>
+                <td>Function to be called once loaded</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="container">
+        <h2>Demo</h2>
+        <div class="col-half">
+            <p style="font-weight: bold;">Default</p>
+            <pre><code>&lt;div class="target"&gt;<br>&emsp;&lt;img src="path/to/image.jpg" /&gt;<br>&lt;/div&gt;<br><br>&lt;script&gt;<br>&emsp;$('.target').izoomify();<br>&lt;script&gt;<br><br><br><br></code></pre>
+            <br>
+            <div class="img-wrapper1">
+                <img src="./demo/images/accessory-bag-briefcase-1920x1281.jpg" alt="" />
+            </div>
+        </div>
+        <div class="col-half img-fullwidth">
+            <p style="font-weight: bold;">Data Attribute</p>
+            <pre><code>&lt;div class="target"&gt;<br>&emsp;&lt;img src="low-res/image.jpg" <br>&emsp;&emsp;<b>data-izoomify-url</b>="hi-res/hover.jpg" <br>&emsp;&emsp;<b>data-izoomify-magnify</b>="1.8" <br>&emsp;&emsp;<b>data-izoomify-duration</b>="300" /&gt;<br>&lt;/div&gt;<br><br>&lt;script&gt;<br>&emsp;$('.target').izoomify();<br>&lt;script&gt;</code></pre>
+            <br>
+            <div class="img-wrapper2">
+                <img src="./demo/images/accessory-bag-briefcase-400x267.jpg" alt=""
+                    data-izoomify-url="./demo/images/accessory-bag-briefcase-1920x1281.jpg" data-izoomify-magnify="1.8"
+                    data-izoomify-duration="300" />
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <p style="font-weight: bold;">Javascript</p>
+        <pre><code>&lt;div class="target"&gt;<br>&emsp;&lt;img src="low-res/image.jpg" /&gt;<br>&lt;/div&gt;<br><br>&lt;script&gt;<br>&emsp;$('.target').izoomify({<br>&emsp;&emsp;<b>url</b>: "hi-res/hover.jpg",<br>&emsp;&emsp;<b>magnify</b>: 2.75,<br>&emsp;&emsp;<b>duration</b>: 450,<br>&emsp;&emsp;<b>touch</b>: true,<br>&emsp;&emsp;<b>callback</b>: function(){<br>&emsp;&emsp;&emsp;&emsp;//your code here..<br>&emsp;&emsp;}<br>&emsp;});<br>&lt;script&gt;<br><br><br><br></code></pre>
+        <div class="example3 img-fullwidth">
+            <div class="img-wrapper3">
+                <img src="./demo/images/accessory-bag-briefcase-400x267.jpg" alt="" />
+            </div>
+        </div>
+    </div>
+
+    <p class="author"><a href="https://codepen.io/abiacarl">Made with love by <b>Carl Lomer Abia</b></a></p>
+    <!-- scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="./dist/jquery.izoomify.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.img-wrapper1').izoomify();
+            $('.img-wrapper2').izoomify();
+            $('.img-wrapper3').izoomify({
+                url: './demo/images/accessory-bag-briefcase-1920x1281.jpg',
+                magnify: 2.75,
+                duration: 450,
+                callback: function () {
+                    console.log(this);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
